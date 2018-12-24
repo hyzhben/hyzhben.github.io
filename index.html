@@ -84,7 +84,59 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>\1.     安装node环境，成功之后如下</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" alt="img"></p>
+<p>\2.     安装Git和配置好Git环境，成功之后右键有如下两个选择</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png" alt="img"></p>
+<p>成功之后</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image003.png" alt="img"></p>
+<p>\3.     Github上新建项目，项目必须要遵守格式：账户名.github.io，不然接下来会有很多麻烦。并且需要勾选Initialize this repository with a README</p>
+<p>在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image005.jpg" alt="img"></p>
+<p>访问如下</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image007.jpg" alt="img"></p>
+<p>\4.     安装Hexo，在自己认为合适的地方创个文件夹，我是在D盘建了一个blog文件夹。然后通过命令行进入到该文件夹里面</p>
+<p>安装Hexo，npm install -g hexo-cli</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png" alt="img"></p>
+<p>检查是否安装成功，hexo -v</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image009.png" alt="img"></p>
+<p>输入hexo init，初始化该文件夹（有点漫长的等待。。。）</p>
+<p>好像不行，最后以管理员身份打开cmd窗口，重新安装一次hexo</p>
+<p>安装</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image011.jpg" alt="img"></p>
+<p>报错</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image012.png" alt="img"></p>
+<p>继续按提示安装</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image014.jpg" alt="img"></p>
+<p>安装成功</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image015.png" alt="img"></p>
+<p>继续 hexo init，成功</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image017.jpg" alt="img">输入npm install，安装所需要的组件</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image019.jpg" alt="img"></p>
+<p>输入hexo g，首次体验Hexo</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image021.jpg" alt="img"></p>
+<p>输入hexo s，开启服务器，访问该网址，正式体验Hexo</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image023.jpg" alt="img"></p>
+<p>输入网址即可访问到这个</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image025.jpg" alt="img"></p>
+<p>-p 改变端口号</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image026.png" alt="img"></p>
+<p>cd ~/.ssh</p>
+<p>ls</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image027.png" alt="img"></p>
+<p>测试：</p>
+<p>在终端 ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a></p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image028.png" alt="img"></p>
+<p>6、配置Deployment，在其文件夹中，找到_config.yml文件，修改repo值（在末尾）</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image030.jpg" alt="img"></p>
+<p>7、新建一篇博客，在cmd执行命令：hexo new post “博客名”</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image032.jpg" alt="img"></p>
+<p>在生成以及部署文章之前，需要安装一个扩展：npm install hexo-deployer-git –save</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image033.png" alt="img"></p>
+<p>使用编辑器编好文章，那么就可以使用命令：hexo d -g，生成以及部署了</p>
+<p>部署成功后访问你的地址：http://用户名.github.io。那么将看到生成的文章</p>
+<p><img src="file:///C:/Users/ben/AppData/Local/Temp/msohtmlclip1/01/clip_image035.jpg" alt="img"></p>
+
       
     </div>
     <footer class="article-footer">
