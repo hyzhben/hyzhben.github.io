@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="安装node.jsnpm:它是node包管理和分发工具 init：工程初始化命令 npm install 模块名：用于安装某一个模块（如express（node的web框架）） npm install -g：-g代表全局安装 npm root -g：可以查看全局目录在哪 npm install：一键下载工程所需要的模块 npm run dev：运行某一个工程 npm run build：编译工程，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="十次方">
+<meta property="og:url" content="http://yoursite.com/2018/12/25/十次方/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="安装node.jsnpm:它是node包管理和分发工具 init：工程初始化命令 npm install 模块名：用于安装某一个模块（如express（node的web框架）） npm install -g：-g代表全局安装 npm root -g：可以查看全局目录在哪 npm install：一键下载工程所需要的模块 npm run dev：运行某一个工程 npm run build：编译工程，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-12-25T09:55:04.686Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="十次方">
+<meta name="twitter:description" content="安装node.jsnpm:它是node包管理和分发工具 init：工程初始化命令 npm install 模块名：用于安装某一个模块（如express（node的web框架）） npm install -g：-g代表全局安装 npm root -g：可以查看全局目录在哪 npm install：一键下载工程所需要的模块 npm run dev：运行某一个工程 npm run build：编译工程，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/12/25/十次方/">
+
+
+
+
+
+  <title>十次方 | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/25/十次方/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bencode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">十次方</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-25T16:08:59+08:00">
+                2018-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h4><h4 id="npm-它是node包管理和分发工具"><a href="#npm-它是node包管理和分发工具" class="headerlink" title="npm:它是node包管理和分发工具"></a>npm:它是node包管理和分发工具</h4><ul>
+<li><h4 id="init：工程初始化命令"><a href="#init：工程初始化命令" class="headerlink" title="init：工程初始化命令"></a>init：工程初始化命令</h4></li>
+<li><h4 id="npm-install-模块名：用于安装某一个模块（如express（node的web框架））"><a href="#npm-install-模块名：用于安装某一个模块（如express（node的web框架））" class="headerlink" title="npm install 模块名：用于安装某一个模块（如express（node的web框架））"></a>npm install 模块名：用于安装某一个模块（如express（node的web框架））</h4></li>
+<li><h4 id="npm-install-g：-g代表全局安装"><a href="#npm-install-g：-g代表全局安装" class="headerlink" title="npm install -g：-g代表全局安装"></a>npm install -g：-g代表全局安装</h4></li>
+<li><h4 id="npm-root-g：可以查看全局目录在哪"><a href="#npm-root-g：可以查看全局目录在哪" class="headerlink" title="npm root -g：可以查看全局目录在哪"></a>npm root -g：可以查看全局目录在哪</h4></li>
+<li><h4 id="npm-install：一键下载工程所需要的模块"><a href="#npm-install：一键下载工程所需要的模块" class="headerlink" title="npm install：一键下载工程所需要的模块"></a>npm install：一键下载工程所需要的模块</h4></li>
+<li><h4 id="npm-run-dev：运行某一个工程"><a href="#npm-run-dev：运行某一个工程" class="headerlink" title="npm run dev：运行某一个工程"></a>npm run dev：运行某一个工程</h4></li>
+<li><h4 id="npm-run-build：编译工程，生成之后会多出一个dist文件夹，里面只有一个静态页面和一个static文件夹"><a href="#npm-run-build：编译工程，生成之后会多出一个dist文件夹，里面只有一个静态页面和一个static文件夹" class="headerlink" title="npm run build：编译工程，生成之后会多出一个dist文件夹，里面只有一个静态页面和一个static文件夹"></a>npm run build：编译工程，生成之后会多出一个dist文件夹，里面只有一个静态页面和一个static文件夹</h4><h4 id="这种工程我们称之为单页Web应用（single-page-application-SPA），就是只有一张Web页面的应用，是加载单个HTML页面并在用户与应用程序交互时动态更新改页面的Web应用程"><a href="#这种工程我们称之为单页Web应用（single-page-application-SPA），就是只有一张Web页面的应用，是加载单个HTML页面并在用户与应用程序交互时动态更新改页面的Web应用程" class="headerlink" title="这种工程我们称之为单页Web应用（single page application,SPA），就是只有一张Web页面的应用，是加载单个HTML页面并在用户与应用程序交互时动态更新改页面的Web应用程"></a>这种工程我们称之为单页Web应用（single page application,SPA），就是只有一张Web页面的应用，是加载单个HTML页面并在用户与应用程序交互时动态更新改页面的Web应用程</h4></li>
+</ul>
+<h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><ul>
+<li><h4 id="webpack官网：https-www-webpackjs-com"><a href="#webpack官网：https-www-webpackjs-com" class="headerlink" title="webpack官网：https://www.webpackjs.com/"></a>webpack官网：<a href="https://www.webpackjs.com/" target="_blank" rel="noopener">https://www.webpackjs.com/</a></h4></li>
+<li><h4 id="webpack是一个前端资源加载-打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规划生成对应的静态资源。"><a href="#webpack是一个前端资源加载-打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规划生成对应的静态资源。" class="headerlink" title="webpack是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规划生成对应的静态资源。"></a>webpack是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规划生成对应的静态资源。</h4></li>
+<li><h4 id="安装webpack和webpack-cli：npm-install-webpack-webpack-cli-–save-dev"><a href="#安装webpack和webpack-cli：npm-install-webpack-webpack-cli-–save-dev" class="headerlink" title="安装webpack和webpack-cli：npm install webpack webpack-cli –save-dev"></a>安装webpack和webpack-cli：npm install webpack webpack-cli –save-dev</h4></li>
+<li><h4 id="把js、css、图片等打包成一个js文件，然后一个静态页面"><a href="#把js、css、图片等打包成一个js文件，然后一个静态页面" class="headerlink" title="把js、css、图片等打包成一个js文件，然后一个静态页面"></a>把js、css、图片等打包成一个js文件，然后一个静态页面</h4></li>
+</ul>
+<h1 id="VsCode"><a href="#VsCode" class="headerlink" title="VsCode"></a>VsCode</h1><h4 id="官网：https-code-visualstudio-com"><a href="#官网：https-code-visualstudio-com" class="headerlink" title="官网：https://code.visualstudio.com/"></a>官网：<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></h4><p># </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/25/Hexo安装nexT主题/" rel="next" title="Hexo安装nexT主题">
+                <i class="fa fa-chevron-left"></i> Hexo安装nexT主题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/29/maven的使用/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">bencode</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-它是node包管理和分发工具"><span class="nav-number">2.</span> <span class="nav-text">npm:它是node包管理和分发工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#init：工程初始化命令"><span class="nav-number">3.</span> <span class="nav-text">init：工程初始化命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-install-模块名：用于安装某一个模块（如express（node的web框架））"><span class="nav-number">4.</span> <span class="nav-text">npm install 模块名：用于安装某一个模块（如express（node的web框架））</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-install-g：-g代表全局安装"><span class="nav-number">5.</span> <span class="nav-text">npm install -g：-g代表全局安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-root-g：可以查看全局目录在哪"><span class="nav-number">6.</span> <span class="nav-text">npm root -g：可以查看全局目录在哪</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-install：一键下载工程所需要的模块"><span class="nav-number">7.</span> <span class="nav-text">npm install：一键下载工程所需要的模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-run-dev：运行某一个工程"><span class="nav-number">8.</span> <span class="nav-text">npm run dev：运行某一个工程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#npm-run-build：编译工程，生成之后会多出一个dist文件夹，里面只有一个静态页面和一个static文件夹"><span class="nav-number">9.</span> <span class="nav-text">npm run build：编译工程，生成之后会多出一个dist文件夹，里面只有一个静态页面和一个static文件夹</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这种工程我们称之为单页Web应用（single-page-application-SPA），就是只有一张Web页面的应用，是加载单个HTML页面并在用户与应用程序交互时动态更新改页面的Web应用程"><span class="nav-number">10.</span> <span class="nav-text">这种工程我们称之为单页Web应用（single page application,SPA），就是只有一张Web页面的应用，是加载单个HTML页面并在用户与应用程序交互时动态更新改页面的Web应用程</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack"><span class="nav-number"></span> <span class="nav-text">webpack</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack官网：https-www-webpackjs-com"><span class="nav-number">1.</span> <span class="nav-text">webpack官网：https://www.webpackjs.com/</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#webpack是一个前端资源加载-打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规划生成对应的静态资源。"><span class="nav-number">2.</span> <span class="nav-text">webpack是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规划生成对应的静态资源。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装webpack和webpack-cli：npm-install-webpack-webpack-cli-–save-dev"><span class="nav-number">3.</span> <span class="nav-text">安装webpack和webpack-cli：npm install webpack webpack-cli –save-dev</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把js、css、图片等打包成一个js文件，然后一个静态页面"><span class="nav-number">4.</span> <span class="nav-text">把js、css、图片等打包成一个js文件，然后一个静态页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VsCode"><span class="nav-number"></span> <span class="nav-text">VsCode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#官网：https-code-visualstudio-com"><span class="nav-number">1.</span> <span class="nav-text">官网：https://code.visualstudio.com/</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">bencode</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
