@@ -289,6 +289,300 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/09/17 Docker容器化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="bencode">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo-bencode">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/09/17 Docker容器化/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-09T19:04:40+08:00">
+                2019-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h5 id="Docker镜像与容器"><a href="#Docker镜像与容器" class="headerlink" title="Docker镜像与容器"></a>Docker镜像与容器</h5><p>通过Docker镜像构建容器，如：一个MySQL镜像可以构建多个MySQL容器</p>
+</li>
+<li><h5 id="Registry（注册中心）"><a href="#Registry（注册中心）" class="headerlink" title="Registry（注册中心）"></a>Registry（注册中心）</h5><p>Docker用Registry来保存用户构建的镜像。Registry分为共有（Docker Hub）和私有两种，在Docker Hub下载巨慢，可以自己构建私有的Regisrty</p>
+<p><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
+</li>
+</ul>
+<h2 id="1-安装步骤（Centos7）"><a href="#1-安装步骤（Centos7）" class="headerlink" title="1. 安装步骤（Centos7）"></a>1. 安装步骤（Centos7）</h2><ol>
+<li><p>yun包更新到最新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\images\Docker\Snipaste_19-9-23-23：14：29.png" alt="Snipaste_19-9-23-23：14：29"></p>
+</li>
+</ol>
+<ol start="2">
+<li><p>安装docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker -y</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\17 Docker容器化\images\Docker\Snipaste_19-9-23-23：18：32.png" alt="Snipaste_19-9-23-23：18：32"></p>
+</li>
+<li><p>验证安装成功，查看Docker版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-命令"><a href="#2-命令" class="headerlink" title="2. 命令"></a>2. 命令</h2><ul>
+<li><h5 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="查看docker状态"><a href="#查看docker状态" class="headerlink" title="查看docker状态"></a>查看docker状态</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="关闭docker"><a href="#关闭docker" class="headerlink" title="关闭docker"></a>关闭docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="重启docker"><a href="#重启docker" class="headerlink" title="重启docker"></a>重启docker</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="设置为开机自动启动"><a href="#设置为开机自动启动" class="headerlink" title="设置为开机自动启动"></a>设置为开机自动启动</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="查看docker概要信息（docler-启动之后可用）"><a href="#查看docker概要信息（docler-启动之后可用）" class="headerlink" title="查看docker概要信息（docler 启动之后可用）"></a>查看docker概要信息（docler 启动之后可用）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
+</li>
+<li><h5 id="在线文档"><a href="#在线文档" class="headerlink" title="在线文档"></a>在线文档</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker --help</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-常用命令"><a href="#3-常用命令" class="headerlink" title="3.常用命令"></a>3.常用命令</h2><h3 id="3-1-1-查看镜像"><a href="#3-1-1-查看镜像" class="headerlink" title="3.1.1 查看镜像"></a>3.1.1 查看镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>REPOSITORY：镜像名称</li>
+<li>TAG：标签，版本</li>
+<li>IMAGE ID：镜像ID，唯一</li>
+<li>CREATED：创建时间</li>
+<li>SIZE：大小</li>
+</ul>
+<h3 id="3-1-2-搜索镜像"><a href="#3-1-2-搜索镜像" class="headerlink" title="3.1.2 搜索镜像"></a>3.1.2 搜索镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql（镜像名称）</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\17 Docker容器化\images\Docker\Snipaste_19-9-24-6：41：42.png" alt="Snipaste_19-9-24-6：41：42"></p>
+<h3 id="3-1-3-删除镜像"><a href="#3-1-3-删除镜像" class="headerlink" title="3.1.3 删除镜像"></a>3.1.3 删除镜像</h3><p>按镜像ID删除镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi 镜像ID</span><br></pre></td></tr></table></figure>
+<p>删除所有镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi `docker images -q`</span><br></pre></td></tr></table></figure>
+<h2 id="3-2-容器相关命令"><a href="#3-2-容器相关命令" class="headerlink" title="3.2 容器相关命令"></a>3.2 容器相关命令</h2><h3 id="3-2-1-查看容器"><a href="#3-2-1-查看容器" class="headerlink" title="3.2.1 查看容器"></a>3.2.1 查看容器</h3><p>查看正在运行的容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
+<p>查看所有容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p>查看最后一次运行的容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -l</span><br></pre></td></tr></table></figure>
+<p>查看停止的容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -f statu=exited</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-2-创建与启动容器"><a href="#3-2-2-创建与启动容器" class="headerlink" title="3.2.2 创建与启动容器"></a>3.2.2 创建与启动容器</h3><p>创建容器命令：<strong>docker run</strong></p>
+<ul>
+<li>-i：表示运行容器</li>
+<li>-t：表示容器启动后会进入其命令行</li>
+<li>–name：为创建的容器命名</li>
+<li>-v：表示目录映射关系</li>
+<li>-d：在run后面加上-d参数，则会创建一个守护式容器在后台运行（这样创建容器后不会自动登录容器，只加-i，-t，创建后会自动进入容器）</li>
+<li>-p：表示端口映射，前者是宿主机端口，后者是容器内的映射端口。可以使用-p做多个端口映射</li>
+</ul>
+<p>（1）交互式方式创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=容器名称 镜像名称:标签 /bin/bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=mysql mysql:latest /bin/bash</span><br></pre></td></tr></table></figure>
+<p>退出当前容器（退出时，容器自动关闭）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+<p>（2）守护式方式创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=容器名称 镜像名称:标签</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=mysql2 mysql:latest /bin/bash</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\17 Docker容器化\images\Docker\2019 09 24-23：1：11.png" alt="2019 09 24-23：1：11"></p>
+<p>登录守护式容器方式容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql2（容器名称或ID） /bin/bash</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-3-启动与停止容器"><a href="#3-2-3-启动与停止容器" class="headerlink" title="3.2.3 启动与停止容器"></a>3.2.3 启动与停止容器</h3><p>启动容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker start 容器名称或ID</span><br></pre></td></tr></table></figure>
+<p>停止容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker stop 容器名称或ID</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-4-拷贝命令"><a href="#3-2-4-拷贝命令" class="headerlink" title="3.2.4 拷贝命令"></a>3.2.4 拷贝命令</h3><p>把文件拷贝到docker容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 要拷贝的文件或者目录 容器名称:容器目录</span><br></pre></td></tr></table></figure>
+<p>将文件从容器内拷贝出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker cp 容器名称:容器目录 需要拷贝的文件或目录</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-5-目录挂载"><a href="#3-2-5-目录挂载" class="headerlink" title="3.2.5 目录挂载"></a>3.2.5 目录挂载</h3><h3 id="3-2-6-查看容器IP地址（要先启动容器）"><a href="#3-2-6-查看容器IP地址（要先启动容器）" class="headerlink" title="3.2.6 查看容器IP地址（要先启动容器）"></a>3.2.6 查看容器IP地址（要先启动容器）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect mysql3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker inspect --format=&#123;&#123;.NetworkSettings.IPAddress&#125;&#125; mysql3</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-7-删除容器"><a href="#3-2-7-删除容器" class="headerlink" title="3.2.7 删除容器"></a>3.2.7 删除容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm 容器名（容器ID）</span><br></pre></td></tr></table></figure>
+<h2 id="4-应用部署"><a href="#4-应用部署" class="headerlink" title="4 应用部署"></a>4 应用部署</h2><h3 id="4-1-MySQL"><a href="#4-1-MySQL" class="headerlink" title="4.1 MySQL"></a>4.1 MySQL</h3><p>查询现有镜像命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search mysql</span><br></pre></td></tr></table></figure>
+<p>拉取镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull centos/mysql-57-centos7</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\17 Docker容器化\images\Docker\190925-21：22：17.png" alt="190925-21：22：17"></p>
+<p>创建容器（3306映射为33306）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=ben_mysql -p 33306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\17 Docker容器化\images\Docker\190925-22：02：27.png" alt="190925-22：02：27"></p>
+<p><strong>注意：获取mysql 的版本过高时，本地连接可以连不上去，报以下错误，换成mysql:5.6解决问题</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1251–Client does not support authentication protocol requested by server；consider upgrading MySQL Client</span><br></pre></td></tr></table></figure>
+<p><strong>拉取镜像过慢时，使用阿里云镜像，这是别人的，自己的好像也很慢</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">##使用阿里云镜像加速器</span><br><span class="line">[root@localhost ~]# mkdir -p /etc/docker</span><br><span class="line">[root@localhost ~]# tee /etc/docker/daemon.json &lt;&lt;-&apos;EOF&apos;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://9cpn8tt6.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">[root@localhost ~]# systemctl daemon-reload</span><br><span class="line">[root@localhost ~]# systemctl restart docker</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-Tomcat"><a href="#4-2-Tomcat" class="headerlink" title="4.2 Tomcat"></a>4.2 Tomcat</h3><p>查询现有镜像命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search tomcat</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\17 Docker容器化\images\Docker\190926-00：12：08.png" alt="190926-00：12：08"></p>
+<ul>
+<li><p>name表示名称</p>
+</li>
+<li><p>Description：介绍</p>
+</li>
+<li><p>Stars：关注度</p>
+</li>
+<li><p>Official：是不是官方的</p>
+</li>
+<li><p>Automatexd：是不是私有创建的</p>
+</li>
+</ul>
+<p>拉取镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull tomcat:8.5</span><br></pre></td></tr></table></figure>
+<p>创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=mycat -p 9001:8080 -v /usr/local/webapps:/usr/local/tomcat/webapps tomcat:8.5</span><br></pre></td></tr></table></figure>
+<p>sftp上传文件到虚拟机，再用docker cp命令复制我那件到容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-Nginx"><a href="#4-2-Nginx" class="headerlink" title="4.2 Nginx"></a>4.2 Nginx</h3><p>拉取镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
+<p>创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=munginx -p 80:80 nginx</span><br></pre></td></tr></table></figure>
+<p><strong>测试：输入虚拟机地址<a href="http://192.168.220.132/" target="_blank" rel="noopener">http://192.168.220.132/</a>，就会有Nginx的欢迎界面</strong></p>
+<h3 id="4-3-Redis"><a href="#4-3-Redis" class="headerlink" title="4.3 Redis"></a>4.3 Redis</h3><p>查看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search redis</span><br></pre></td></tr></table></figure>
+<p>拉取Redis镜像</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull redis</span><br></pre></td></tr></table></figure>
+<p>创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -di --name=myredis -p 6379:6379 redis</span><br></pre></td></tr></table></figure>
+<p>测试连接，打开redis客户端所在目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G:\Redis&gt; redis-cli -h 192.168.220.132</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\ben\Desktop\hyzh\images\Docker\190927-22：24：35.png" alt="190927-22：24：35"></p>
+<h2 id="5-迁移和备份"><a href="#5-迁移和备份" class="headerlink" title="5 迁移和备份"></a>5 迁移和备份</h2><h3 id="5-1-容器保存为镜像"><a href="#5-1-容器保存为镜像" class="headerlink" title="5.1 容器保存为镜像"></a>5.1 容器保存为镜像</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit mynginx(容器名) mynginx1(保存的镜像名)</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-镜像备份"><a href="#5-2-镜像备份" class="headerlink" title="5.2 镜像备份"></a>5.2 镜像备份</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker save -o mynginx.tar mynginx1</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-镜像恢复与迁移"><a href="#5-3-镜像恢复与迁移" class="headerlink" title="5.3 镜像恢复与迁移"></a>5.3 镜像恢复与迁移</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker load -i mynginx.tar</span><br></pre></td></tr></table></figure>
+<h2 id="6-Dockerfile"><a href="#6-Dockerfile" class="headerlink" title="6 Dockerfile"></a>6 Dockerfile</h2><h3 id="6-1-什么是Dockerfile"><a href="#6-1-什么是Dockerfile" class="headerlink" title="6.1 什么是Dockerfile"></a>6.1 什么是Dockerfile</h3><h3 id="6-2-常用命令"><a href="#6-2-常用命令" class="headerlink" title="6.2 常用命令"></a>6.2 常用命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM image_name:tag</td>
+<td>定义了使用哪个基础镜像启动构建刘恒</td>
+</tr>
+<tr>
+<td>MAINTANER user_name</td>
+<td>声明镜像的创建者</td>
+</tr>
+<tr>
+<td>ENV key value</td>
+<td>设置环境变量（可以写多条）</td>
+</tr>
+<tr>
+<td>ADD suorce_dir/filedest_dir/file</td>
+<td>将宿主机的文件复制到容器内，如果是一个压缩文件。将会在复制后自动解压</td>
+</tr>
+<tr>
+<td>COPY source_dir/filedest_dir/file</td>
+<td>和ADD相似，但是如果有压缩文件并不能解压</td>
+</tr>
+<tr>
+<td>WORKDIR path_dir</td>
+<td>设置工作目录</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/jdbc/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1615,152 +1909,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/Typora入门/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="bencode">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo-bencode">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/Typora入门/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T13:51:32+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="title-Typora入门"><a href="#title-Typora入门" class="headerlink" title="title: Typora入门"></a>title: Typora入门</h1><p>date: 2018-12-24 13:51:32<br>tags:</p>
-<h3 id="前面是效果，（）里面是写法，【】里面是快捷键"><a href="#前面是效果，（）里面是写法，【】里面是快捷键" class="headerlink" title="前面是效果，（）里面是写法，【】里面是快捷键"></a>前面是效果，（）里面是写法，【】里面是快捷键</h3><h1 id="标题1（-标题1）【Ctrl-1】"><a href="#标题1（-标题1）【Ctrl-1】" class="headerlink" title="标题1（# 标题1）【Ctrl+1】"></a>标题1（# 标题1）【Ctrl+1】</h1><h2 id="标题2-（-标题2）【Ctrl-2】"><a href="#标题2-（-标题2）【Ctrl-2】" class="headerlink" title="标题2 （## 标题2）【Ctrl+2】"></a>标题2 （## 标题2）【Ctrl+2】</h2><h3 id="标题3-（-标题3）【Ctrl-3】"><a href="#标题3-（-标题3）【Ctrl-3】" class="headerlink" title="标题3 （### 标题3）【Ctrl+3】"></a>标题3 （### 标题3）【Ctrl+3】</h3><h4 id="标题4-（-标题4）【Ctrl-4】"><a href="#标题4-（-标题4）【Ctrl-4】" class="headerlink" title="标题4 （#### 标题4）【Ctrl+4】"></a>标题4 （#### 标题4）【Ctrl+4】</h4><h5 id="标题5-（-标题5）【Ctrl-5】"><a href="#标题5-（-标题5）【Ctrl-5】" class="headerlink" title="标题5 （##### 标题5）【Ctrl+5】"></a>标题5 （##### 标题5）【Ctrl+5】</h5><h6 id="标题6-（-标题6）【Ctrl-6】（我这个快捷键有点小问题，可能是有点冲突）"><a href="#标题6-（-标题6）【Ctrl-6】（我这个快捷键有点小问题，可能是有点冲突）" class="headerlink" title="标题6 （###### 标题6）【Ctrl+6】（我这个快捷键有点小问题，可能是有点冲突）"></a>标题6 （###### 标题6）【Ctrl+6】（我这个快捷键有点小问题，可能是有点冲突）</h6><p><strong>字体加粗</strong> <strong>（内容两边各有两个*号）</strong> <strong>【Ctrl+B】</strong></p>
-<p><em>字体倾斜</em> （内容两边各有一个*号）【Ctrl+I】</p>
-<p><u>字体下面加下划线</u> （<u></u>标签里面加内容，没有空格）【Ctrl+U】  </p>
-<p><strong><em>字体加粗且倾斜</em></strong> <strong>（内容两边各有3个*号）</strong></p>
-<ul>
-<li><h4 id="实原点（-内容）"><a href="#实原点（-内容）" class="headerlink" title="实原点（- 内容）"></a><strong>实原点（- 内容）</strong></h4></li>
-</ul>
-<blockquote>
-<p>引用内容 （&gt; 内容）<br>就是如此</p>
-<blockquote>
-<p>如此如此<br>这般这般 （&gt; &gt; 内容）</p>
-</blockquote>
-<p>（&gt; 内容）</p>
-</blockquote>
-<p><code>代码</code> （<code></code>，在两个反引号之间写代码）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">代码块，第一行和末行各有三个反引号</span><br></pre></td></tr></table></figure>
-<p>可以多行<br><code>`</code></p>
-<ol>
-<li>有序列表1（1. 内容）</li>
-<li>有序列表2 （2. 内容，直接回车就可以了）<ol>
-<li>有序列表2.1</li>
-<li>有序列表2.2</li>
-</ol>
-</li>
-<li>有序列表3</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1811,7 +1959,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
